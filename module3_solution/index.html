@@ -15,15 +15,16 @@
     <div class="form-group">
       <input type="text" placeholder="search term" class="form-control" ng-model="narrowCtrl.searchTerm">
     </div>
-    
+
     <div class="form-group narrow-button">
       <button class="btn btn-primary" ng-click="narrowCtrl.narrowDown(narrowCtrl.searchTerm);">Narrow It Down For Me!</button>
     </div>
 
     <!-- found-items should be implemented as a component -->
+    <div style="display:inline-block">
     <found-items items="narrowCtrl.found" on-remove="narrowCtrl.removeItem(index)" >
     </found-items>
-  </div>
+    </div>
 
 </body>
 </html>

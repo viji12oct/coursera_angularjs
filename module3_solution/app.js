@@ -12,14 +12,20 @@ function NarrowItDownController(MenuSearchService){
    var narrowCtrl = this;
 
    narrowCtrl.narrowDown = function(searchTerm){
-     var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
-     promise.then(function(response){
-       narrowCtrl.found = response;
-     })
-     .catch(function(error){
-       console.log(error);
-     });
-   };
+
+   if(searchTerm){
+       var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
+       promise.then(function(response){
+         narrowCtrl.found = response;
+       })
+       .catch(function(error){
+         console.log(error);
+       });
+     }
+   else{
+     narrowCtrl.found = [];
+   }
+  };
 
    narrowCtrl.removeItem = function(itemIndex){
      this.lastRemoved = "Last item removed was " + narrowCtrl.found[itemIndex].name;
